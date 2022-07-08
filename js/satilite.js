@@ -14,8 +14,10 @@ class Satilite {
         planets.forEach((planet) => {
             let distance = calcDistance(this, planet);
             if (distance <= planet.radius + this.width / 2) {
-                window.location.reload();
-                activeGame = false;
+                hasLost = true;
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
             } else if (distance <= planet.gravityRadius) {
                 let direction = calcDirection(this, planet);
                 let angle = atan2(-direction.y, -direction.x);
