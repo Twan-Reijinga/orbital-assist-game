@@ -23,6 +23,8 @@ function preload() {
     satalite_0 = loadImage("img/satalite_0.png");
     satalite_1 = loadImage("img/satalite_1.png");
     satalite_2 = loadImage("img/satalite_2.png");
+    death_sound = loadSound('sfx/explosion.wav');
+    win_sound = loadSound('sfx/pickupCoin.wav');
 }
 
 function setup() {

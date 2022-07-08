@@ -52,6 +52,7 @@ class Satilite {
 
                 if (!collisionHad && collision) {
                     satilitesCompleted++;
+                    win_sound.play();
                 }
             }
         });
