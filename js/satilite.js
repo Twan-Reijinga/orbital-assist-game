@@ -12,7 +12,7 @@ class Satilite {
         this.addLoc(this.direction.x, this.direction.y);
         planets.forEach((planet) => {
             let distance = calcDistance(this, planet);
-            if (distance <= planet.radius) {
+            if (distance <= planet.radius + this.width / 2) {
                 console.log("dead");
             } else if (distance <= planet.gravityRadius) {
                 let direction = calcDirection(this, planet);
@@ -25,12 +25,13 @@ class Satilite {
     draw() {
         fill(this.color);
         noStroke();
-        rect(
-            this.x - this.width / 2,
-            this.y - this.height / 2,
-            this.width,
-            this.height
-        );
+
+        imageMode(CENTER);
+
+        line(0, 0, this.x, this.y);
+        image(satalite_blue, this.x, this.y, this.width, this.height);
+
+        imageMode(CORNER);
     }
 
     addLoc(x, y) {
@@ -41,10 +42,4 @@ class Satilite {
     addDirection(angle) {
         this.direction.add(cos(angle) * 0.02, sin(angle) * 0.02);
     }
-
-    // getDirection() {
-    //     let x = cos(this.angle);
-    //     let y = sin(this.angle);
-    //     return createVector(x, y);
-    // }
 }
