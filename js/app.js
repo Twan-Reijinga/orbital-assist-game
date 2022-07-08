@@ -4,7 +4,7 @@ let start_status = 0;
 const goals = [];
 let statusBar;
 let round = 0;
-let countDown = 30;
+let countDown = 4;
 let activeGame = false;
 
 function preload() {
@@ -44,32 +44,35 @@ function setup() {
 function draw() {
     background(start_screen_background);
     textSize(100);
-    text('PRESS TO START', 100, 350);
+    text("PRESS TO START", 100, 350);
     fill(255);
-    if (start_status == 1){
+    if (start_status == 1) {
         background(backgroundSpace);
         if (!activeGame) {
             movePlanet();
         }
-    
+
         planets.forEach((planet) => {
             planet.draw();
         });
-    
+
         satilites.forEach((satilite) => {
-            satilite.update();
+            if (activeGame) {
+                satilite.update();
+            }
+
             satilite.draw();
         });
-    
+
         goals.forEach((goal) => {
             goal.draw();
         });
-    
+
         statusBar.draw();
     }
 }
 
-function mouseClicked(){
+function mouseClicked() {
     start_status = 1;
     draw();
 }
