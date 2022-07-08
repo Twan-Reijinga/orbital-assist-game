@@ -122,7 +122,9 @@ function updateCountDown() {
 function lose() {
     hasLost = false;
     activeGame = false;
+    let copyPlanets = planets;
     startRound();
+    planets = copyPlanets;
 }
 
 function win() {
