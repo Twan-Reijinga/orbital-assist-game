@@ -14,11 +14,12 @@ function preload() {
     planet_3 = loadImage("img/planet_3.png");
     planet_4 = loadImage("img/planet_4.png");
     planet_5 = loadImage("img/planet_6.png");
-    portal_red = loadImage("img/portal_red.png");
-    portal_blue = loadImage("img/portal_blue.png");
-    satalite_blue = loadImage("img/satalite_blue.png");
-    satalite_green = loadImage("img/satalite_green.png");
-    satalite_red = loadImage("img/satalite_red.png");
+    portal_0 = loadImage("img/portal_0.png");
+    portal_1 = loadImage("img/portal_1.png");
+    portal_2 = loadImage("img/portal_2.png");
+    satalite_0 = loadImage("img/satalite_0.png");
+    satalite_1 = loadImage("img/satalite_1.png");
+    satalite_2 = loadImage("img/satalite_2.png");
 }
 
 function setup() {
@@ -28,9 +29,9 @@ function setup() {
     frameRate(144);
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, planet_1, "white"));
     let direction = createVector(1, 0);
-    satilites.push(new Satilite(200, 420, 20, 20, satalite_green, direction));
+    satilites.push(new Satilite(200, 420, 20, 20, satalite_2, direction));
     statusBar = new StatusBar(WIDTH, 50);
-    goal = new Goal(width - 27, 69, "y");
+    goal = new Goal(0, width - 27, 69, "y");
     noStroke();
     textFont(font);
     setInterval(updateCountDown, 1000);
