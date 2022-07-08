@@ -1,17 +1,22 @@
 class Goal {
     constructor(x, y, dir) {
+        this.dir = dir;
+
         this.x = x;
         this.y = y;
-        this.dir = dir;
     }
 
     draw() {
         fill("#ff00ff");
 
         if (this.dir == "x") {
-            rect(this.x, this.y, 50, 20);
+            push();
+            translate(this.x, this.y);
+            rotate(radians(-90));
+            image(portal_red, 0, 0);
+            pop();
         } else {
-            rect(this.x, this.y, 20, 50);
+            image(portal_red, this.x, this.y);
         }
     }
 }

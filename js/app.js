@@ -3,9 +3,9 @@ let goal;
 let satilite;
 
 function preload() {
-    backgroundSpace = loadImage('img/background.png');
-    planet_1 = loadImage('img/planet_1.png');
-
+    backgroundSpace = loadImage("img/background.png");
+    planet_1 = loadImage("img/planet_1.png");
+    portal_red = loadImage("img/portal_red.png");
 }
 
 function setup() {
@@ -16,7 +16,7 @@ function setup() {
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, "red"));
     let direction = createVector(1, 0);
     satilite = new Satilite(200, 410, 20, 20, "green", direction);
-    goal = new Goal(69, 69, "y");
+    goal = new Goal(width - 28, 69, "y");
     noStroke();
 }
 
