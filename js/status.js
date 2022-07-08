@@ -7,11 +7,16 @@ class StatusBar {
     draw() {
         fill(0);
         rect(0, 0, this.width, this.height);
-        fill(255);
         textSize(30);
         textAlign(LEFT, CENTER);
-        text("Launch in " + countDown + " seconds", 32, this.height / 2);
+        if (countDown <= 3) {
+            fill("red");
+        } else {
+            fill(255);
+        }
+        text("Launch in " + countDown + " seconds", 30, this.height / 2);
+        fill(255);
         textAlign(RIGHT, CENTER);
-        text("Score: " + round, this.width - 32, this.height / 2);
+        text("Score: " + round, this.width - 30, this.height / 2);
     }
 }
