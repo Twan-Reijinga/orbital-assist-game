@@ -30,7 +30,7 @@ function setup() {
     const WIDTH = 700;
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
-    frameRate(144);
+    frameRate(60);
     startRound();
     // planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, planet_1, "white"));
     // let direction = createVector(1, 0);
