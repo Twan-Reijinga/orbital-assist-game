@@ -5,7 +5,8 @@ class Planet {
         this.gravity = radius;
         this.img = img;
         this.color = color;
-        this.changeLoc(x, y);
+        this.x = x;
+        this.y = y;
     }
 
     draw() {
@@ -16,8 +17,8 @@ class Planet {
         image(this.img, this.x - this.radius, this.y - this.radius);
     }
 
-    changeLoc(x, y) {
-        this.x = x;
-        this.y = y;
+    addLoc(x, y) {
+        this.x += x;
+        this.y += y;
     }
 }

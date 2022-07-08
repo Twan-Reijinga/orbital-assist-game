@@ -4,6 +4,7 @@ let goal;
 let statusBar;
 let round = 0;
 let countDown = 30;
+let activeGame = false;
 
 function preload() {
     backgroundSpace = loadImage("img/background.png");
@@ -40,6 +41,10 @@ function setup() {
 function draw() {
     background(backgroundSpace);
 
+    if (!activeGame) {
+        movePlanet();
+    }
+
     planets.forEach((planet) => {
         planet.draw();
     });
@@ -62,9 +67,28 @@ function updateCountDown() {
 
 function startgame(){
     if (round === 0) {
-        // planets.push(new Planet(400, 300, 25, planet_1, "white"));
+        planets.push(new Planet(400, 300, 25, planet_1, "white"));
         let direction = createVector(0, -1);
         satilites.push(new Satilite(325, 650, 20, 20, satalite_2, direction));
         goal = new Goal(0, width - 27, 180, "y");
     }
+}
+function movePlanet() {
+    for (let i = 0; i < planets.length; i++) {
+        if (
+            mouseIsPressed &&
+            abs(planets[i].x - pmouseX) <= 25 &&
+            abs(planets[i].y - pmouseY) <= 25
+        ) {
+            dmouseX = mouseX - pmouseX;
+            dmouseY = mouseY - pmouseY;
+            planets[i].addLoc(dmouseX, dmouseY);
+        }
+    }
+    // planets.forEach((planet) => {
+    //     if (planet.selected) {
+    //         planet.x = mouseX;
+    //         planet.y = mouseY;
+    //     }
+    // });
 }
