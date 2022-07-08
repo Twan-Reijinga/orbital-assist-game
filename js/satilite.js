@@ -25,13 +25,13 @@ class Satilite {
     draw() {
         fill(this.color);
         noStroke();
-        image(
-            satalite_blue,
-            this.x - this.width / 2,
-            this.y - this.height / 2,
-            this.width,
-            this.height
-        );
+
+        imageMode(CENTER);
+
+        line(0, 0, this.x, this.y);
+        image(satalite_blue, this.x, this.y, this.width, this.height);
+
+        imageMode(CORNER);
     }
 
     addLoc(x, y) {
@@ -42,10 +42,4 @@ class Satilite {
     addDirection(angle) {
         this.direction.add(cos(angle) * 0.02, sin(angle) * 0.02);
     }
-
-    // getDirection() {
-    //     let x = cos(this.angle);
-    //     let y = sin(this.angle);
-    //     return createVector(x, y);
-    // }
 }
