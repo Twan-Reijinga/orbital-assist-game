@@ -1,6 +1,6 @@
 const planets = [];
+let satilites = [];
 let goal;
-let satilite;
 let statusBar;
 let round = 0;
 let countDown = 30;
@@ -28,7 +28,7 @@ function setup() {
     frameRate(144);
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, planet_1, "white"));
     let direction = createVector(1, 0);
-    satilite = new Satilite(200, 420, 20, 20, "green", direction);
+    satilites.push(new Satilite(200, 420, 20, 20, satalite_2, direction));
     statusBar = new StatusBar(WIDTH, 50);
     goal = new Goal(0, width - 27, 69, "y");
     noStroke();
@@ -40,15 +40,14 @@ function draw() {
     background(backgroundSpace);
 
     planets.forEach((planet) => {
-        planets.forEach((planet) => {
-            planet.draw();
-        });
+        planet.draw();
+    });
+    satilites.forEach((satilite) => {
+        satilite.update();
+        satilite.draw();
     });
 
     goal.draw();
-
-    satilite.update();
-    satilite.draw();
     statusBar.draw();
 }
 
