@@ -3,6 +3,8 @@ let satilite;
 
 function preload() {
     backgroundSpace = loadImage('img/background.png');
+    planet_1 = loadImage('img/planet_1.png');
+
 }
 
 function setup() {
