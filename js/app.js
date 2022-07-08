@@ -4,7 +4,7 @@ let start_status = false;
 const goals = [];
 let statusBar;
 let round = 0;
-let countDown = 30;
+let countDown = 5;
 let activeGame = false;
 
 function preload() {
@@ -44,7 +44,7 @@ function setup() {
 function draw() {
     background(start_screen_background);
     textSize(100);
-    text('PRESS TO START', 99, 350);
+    text("PRESS TO START", 99, 350);
     fill(255);
     if (start_status == true) {
         background(backgroundSpace);
@@ -69,6 +69,12 @@ function draw() {
         });
 
         statusBar.draw();
+    }
+}
+
+function keyPressed() {
+    if (keyCode == 13) {
+        countDown = 0;
     }
 }
 
