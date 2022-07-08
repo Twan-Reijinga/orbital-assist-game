@@ -1,19 +1,22 @@
 class Satilite {
     constructor(x, y, width, height, color, direction) {
+        this.x = x;
+        this.y = y;
         this.width = width;
         this.height = height;
         this.color = color;
-        this.changeLoc(x, y);
-        this.changeDirection(direction);
+        this.direction = direction;
     }
 
     update() {
-        this.changeLoc(this.x + this.direction.x, this.y + this.direction.y);
+        this.addLoc(this.direction.x, this.direction.y);
         let distance = calcDistance(this, planet);
         if (distance <= planet.radius) {
             console.log("dead");
-        } else if (distance <= planet.grafityRadius) {
-            console.log("grafity");
+        } else if (distance <= planet.gravityRadius) {
+            let direction = calcDirection(this, planet);
+            let angle = atan2(-direction.y, -direction.x);
+            this.addDirection(angle);
         }
     }
 
@@ -23,12 +26,18 @@ class Satilite {
         rect(this.x, this.y, this.width, this.height);
     }
 
-    changeLoc(x, y) {
-        this.x = x;
-        this.y = y;
+    addLoc(x, y) {
+        this.x = this.x + x;
+        this.y = this.y + y;
     }
 
-    changeDirection(direction) {
-        this.direction = direction;
+    addDirection(angle) {
+        this.direction.add(cos(angle) * 0.02, sin(angle) * 0.02);
     }
+
+    // getDirection() {
+    //     let x = cos(this.angle);
+    //     let y = sin(this.angle);
+    //     return createVector(x, y);
+    // }
 }

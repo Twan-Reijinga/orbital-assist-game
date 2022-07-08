@@ -1,7 +1,8 @@
 class Planet {
     constructor(x, y, radius, color) {
         this.radius = radius;
-        this.grafityRadius = radius * 4;
+        this.gravityRadius = radius * 4;
+        this.gravity = radius;
         this.color = color;
         this.changeLoc(x, y);
     }
@@ -9,7 +10,7 @@ class Planet {
     draw() {
         noFill();
         stroke(this.color);
-        circle(this.x, this.y, this.grafityRadius * 2);
+        circle(this.x, this.y, this.gravityRadius * 2);
         fill(this.color);
         noStroke();
         circle(this.x, this.y, this.radius * 2);
