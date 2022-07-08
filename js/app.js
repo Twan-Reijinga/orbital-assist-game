@@ -1,8 +1,8 @@
-const planets = [];
+let planets = [];
 let satilites = [];
 let satilitesCompleted = 0;
 let start_status = false;
-const goals = [];
+let goals = [];
 let statusBar;
 let round = 0;
 let countDown = 30;
@@ -24,8 +24,6 @@ function preload() {
     satalite_0 = loadImage("img/satalite_0.png");
     satalite_1 = loadImage("img/satalite_1.png");
     satalite_2 = loadImage("img/satalite_2.png");
-    death_sound = loadSound("sfx/explosion.wav");
-    win_sound = loadSound("sfx/pickupCoin.wav");
 }
 
 function setup() {
@@ -128,6 +126,8 @@ function death() {
 function win() {
     console.log("win");
     satilites = [];
+    goals = [];
+    planets = [];
     satilitesCompleted = 0;
     round++;
     activeGame = false;
