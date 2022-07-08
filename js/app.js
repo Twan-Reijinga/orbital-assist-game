@@ -1,12 +1,13 @@
 const planets = [];
 let satilite;
 
-function preload() {}
+function preload() {
+    backgroundSpace = loadImage('img/background.png');
+}
 
 function setup() {
     const WIDTH = 700;
     const HEIGHT = 700;
-    backgroundSpace = loadImage('img/background.png');
     createCanvas(WIDTH, HEIGHT);
     frameRate(60);
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, "red"));
