@@ -1,6 +1,6 @@
 const planets = [];
 let satilites = [];
-const satilitesCompleted = 0;
+let satilitesCompleted = 0;
 let start_status = false;
 const goals = [];
 let statusBar;
@@ -24,6 +24,8 @@ function preload() {
     satalite_0 = loadImage("img/satalite_0.png");
     satalite_1 = loadImage("img/satalite_1.png");
     satalite_2 = loadImage("img/satalite_2.png");
+    death_sound = loadSound('sfx/explosion.wav');
+    win_sound = loadSound('sfx/pickupCoin.wav');
 }
 
 function setup() {
@@ -147,7 +149,7 @@ function startRound() {
         // planets.push(new Planet(300, 420, 25, planet_3, "white"));
         // planets.push(new Planet(450, 280, 25, planet_1, "white"));
         // de corecte manier hierboven
-        planets.push(new Planet(100, 100, 25, planet_1, "white"));
+        planets.push(new Planet(100, 100, 25, planet_3, "white"));
         planets.push(new Planet(300, 400, 25, planet_1, "white"));
         // tijdelijke planeeten hierboven
         direction = createVector(1, 0);
