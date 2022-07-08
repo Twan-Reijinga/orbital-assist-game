@@ -14,7 +14,8 @@ class Satilite {
         planets.forEach((planet) => {
             let distance = calcDistance(this, planet);
             if (distance <= planet.radius + this.width / 2) {
-                console.log("dead");
+                window.location.reload();
+                activeGame = false;
             } else if (distance <= planet.gravityRadius) {
                 let direction = calcDirection(this, planet);
                 let angle = atan2(-direction.y, -direction.x);
@@ -45,11 +46,12 @@ class Satilite {
                 let collisionHad = false;
 
                 const distance = calcDistance(this, goal);
+                console.log(distance);
 
-                const collision = distance < 30;
+                const collision = distance < 60;
 
                 if (!collisionHad && collision) {
-                    win();
+                    satilitesCompleted++;
                 }
             }
         });

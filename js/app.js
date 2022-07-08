@@ -1,5 +1,6 @@
 const planets = [];
 let satilites = [];
+const satilitesCompleted = 0;
 let start_status = false;
 const goals = [];
 let statusBar;
@@ -44,32 +45,45 @@ function setup() {
 function draw() {
     background(start_screen_background);
     textSize(100);
-    text('PRESS TO START', 100, 350);
+    text("PRESS TO START", 99, 350);
     fill(255);
-    if (start_status == true){
+    if (start_status == true) {
+        if (satilitesCompleted == satilites.length) {
+            win();
+        }
+
         background(backgroundSpace);
         if (!activeGame) {
             movePlanet();
         }
-    
+
         planets.forEach((planet) => {
             planet.draw();
         });
-    
+
         satilites.forEach((satilite) => {
-            satilite.update();
+            if (activeGame) {
+                satilite.update();
+            }
+
             satilite.draw();
         });
-    
+
         goals.forEach((goal) => {
             goal.draw();
         });
-    
+
         statusBar.draw();
     }
 }
 
-function mouseClicked(){
+function keyPressed() {
+    if (keyCode == 13) {
+        countDown = 0;
+    }
+}
+
+function mouseClicked() {
     start_status = true;
     draw();
 }
@@ -86,13 +100,17 @@ function updateCountDown() {
     }
 }
 
-
 function death() {
-    console.log(death);
+    console.log("Death");
 }
 
 function win() {
-    console.log(win);
+    console.log("win");
+    satilites = [];
+    satilitesCompleted = 0;
+    round++;
+    activeGame = false;
+    startRound();
 }
 
 function startRound() {
@@ -140,12 +158,7 @@ function movePlanet() {
             dmouseX = mouseX - pmouseX;
             dmouseY = mouseY - pmouseY;
             planets[i].addLoc(dmouseX, dmouseY);
+            i = planets.length;
         }
     }
-    // planets.forEach((planet) => {
-    //     if (planet.selected) {
-    //         planet.x = mouseX;
-    //         planet.y = mouseY;
-    //     }
-    // });
 }
