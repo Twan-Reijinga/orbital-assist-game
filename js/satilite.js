@@ -1,10 +1,10 @@
 class Satilite {
-    constructor(x, y, width, height, color, direction) {
+    constructor(x, y, width, height, img, direction) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.color = color;
+        this.img = img;
         this.direction = direction;
     }
 
@@ -23,13 +23,13 @@ class Satilite {
     }
 
     draw() {
-        fill(this.color);
+        // fill(this.color);
         noStroke();
 
         imageMode(CENTER);
 
         line(0, 0, this.x, this.y);
-        image(satalite_blue, this.x, this.y, this.width, this.height);
+        image(this.img, this.x, this.y, this.width, this.height);
 
         imageMode(CORNER);
     }
