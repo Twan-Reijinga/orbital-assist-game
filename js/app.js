@@ -1,5 +1,6 @@
 const planets = [];
 let satilites = [];
+const satilitesCompleted = 0;
 let start_status = false;
 const goals = [];
 let statusBar;
@@ -47,6 +48,10 @@ function draw() {
     text("PRESS TO START", 99, 350);
     fill(255);
     if (start_status == true) {
+        if (satilitesCompleted == satilites.length) {
+            win();
+        }
+
         background(backgroundSpace);
         if (!activeGame) {
             movePlanet();
@@ -102,6 +107,7 @@ function death() {
 function win() {
     console.log("win");
     satilites = [];
+    satilitesCompleted = 0;
     round++;
     activeGame = false;
     startRound();

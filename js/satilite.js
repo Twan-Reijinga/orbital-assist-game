@@ -46,11 +46,12 @@ class Satilite {
                 let collisionHad = false;
 
                 const distance = calcDistance(this, goal);
+                console.log(distance);
 
                 const collision = distance < 60;
 
                 if (!collisionHad && collision) {
-                    win();
+                    satilitesCompleted++;
                 }
             }
         });
