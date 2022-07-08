@@ -1,5 +1,6 @@
 const planets = [];
 let satilites = [];
+let start_status = 0;
 let goal;
 let statusBar;
 let round = 0;
@@ -7,6 +8,7 @@ let countDown = 30;
 
 function preload() {
     backgroundSpace = loadImage("img/background.png");
+    start_screen_background = loadImage("img/start_screen_background.png");
     font = loadFont("font/m5x7.ttf");
     planet_1 = loadImage("img/planet_1.png");
     planet_2 = loadImage("img/planet_2.png");
@@ -36,18 +38,29 @@ function setup() {
 }
 
 function draw() {
-    background(backgroundSpace);
+    background(start_screen_background);
+    textSize(100);
+    text('PRESS TO START', 100, 350);
+    fill(255);
+    if (start_status == 1){
+        background(backgroundSpace);
 
-    planets.forEach((planet) => {
-        planet.draw();
-    });
-    satilites.forEach((satilite) => {
-        satilite.update();
-        satilite.draw();
-    });
+        planets.forEach((planet) => {
+            planet.draw();
+        });
+        satilites.forEach((satilite) => {
+            satilite.update();
+            satilite.draw();
+        });
 
-    goal.draw();
-    statusBar.draw();
+        goal.draw();
+        statusBar.draw();
+    }
+}
+
+function mouseClicked(){
+    start_status = 1;
+    draw();
 }
 
 function updateCountDown() {
