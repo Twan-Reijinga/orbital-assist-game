@@ -10,7 +10,14 @@ function preload() {
     font = loadFont("font/m5x7.ttf");
     backgroundSpace = loadImage("img/background.png");
     planet_1 = loadImage("img/planet_1.png");
+    planet_2 = loadImage("img/planet_2.png");
+    planet_3 = loadImage("img/planet_3.png");
+    planet_4 = loadImage("img/planet_4.png");
+    planet_5 = loadImage("img/planet_6.png");
+    portal_blue = loadImage('img/portal_blue.png')
     satalite_blue = loadImage("img/satalite_blue.png");
+    satalite_green = loadImage("img/satalite_green.png");
+    satalite_red = loadImage("img/satalite_red.png");
 }
 
 function setup() {
