@@ -1,13 +1,15 @@
 const planets = [];
 let satilites = [];
+let start_status = false;
 const goals = [];
 let statusBar;
-let round = 0;
+let round = 1;
 let countDown = 30;
 let activeGame = false;
 
 function preload() {
     backgroundSpace = loadImage("img/background.png");
+    start_screen_background = loadImage("img/start_screen_background.png");
     font = loadFont("font/m5x7.ttf");
     planet_1 = loadImage("img/planet_1.png");
     planet_2 = loadImage("img/planet_2.png");
@@ -27,7 +29,7 @@ function setup() {
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
     frameRate(144);
-    startgame();
+    startRound();
     // planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, planet_1, "white"));
     // let direction = createVector(1, 0);
     // satilites.push(new Satilite(200, 420, 20, 20, satalite_2, direction));
@@ -35,39 +37,55 @@ function setup() {
     // goal = new Goal(0, width - 27, 69, "y");
     noStroke();
     textFont(font);
+
     setInterval(updateCountDown, 1000);
 }
 
 function draw() {
-    background(backgroundSpace);
-
-    if (!activeGame) {
-        movePlanet();
+    background(start_screen_background);
+    textSize(100);
+    text('PRESS TO START', 100, 350);
+    fill(255);
+    if (start_status == true){
+        background(backgroundSpace);
+        if (!activeGame) {
+            movePlanet();
+        }
+    
+        planets.forEach((planet) => {
+            planet.draw();
+        });
+    
+        satilites.forEach((satilite) => {
+            satilite.update();
+            satilite.draw();
+        });
+    
+        goals.forEach((goal) => {
+            goal.draw();
+        });
+    
+        statusBar.draw();
     }
+}
 
-    planets.forEach((planet) => {
-        planet.draw();
-    });
-
-    satilites.forEach((satilite) => {
-        satilite.update();
-        satilite.draw();
-    });
-
-    goals.forEach((goal) => {
-        goal.draw();
-    });
-
-    statusBar.draw();
+function mouseClicked(){
+    start_status = true;
+    draw();
 }
 
 function updateCountDown() {
+    if (activeGame) {
+        return;
+    }
     if (countDown <= 0) {
+        activeGame = true;
         countDown = 30;
     } else {
         countDown--;
     }
 }
+
 
 function death() {
     console.log("Death");
@@ -80,7 +98,7 @@ function win() {
     activeGame = false;
 }
 
-function startgame() {
+function startRound() {
     if (round === 0) {
         planets.push(new Planet(400, 300, 25, planet_1, "white"));
         let direction = createVector(0, -1);
@@ -88,6 +106,12 @@ function startgame() {
             new Satilite(325, 650, 20, 20, satalite_2, 2, direction)
         );
         goals.push(new Goal(2, width - 27, 180, "y"));
+    }
+    if (round === 1) {
+        planets.push(new Planet(450, 380, 25, planet_3, "white"));
+        let direction = createVector(1, 0);
+        satilites.push(new Satilite(50, 300, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(0, width - 240, 690, "x"));
     }
 }
 

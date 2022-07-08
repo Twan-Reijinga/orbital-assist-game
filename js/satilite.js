@@ -24,8 +24,10 @@ class Satilite {
     }
 
     draw() {
-        // fill(this.color);
         noStroke();
+        if (!activeGame) {
+            this.drawDirection();
+        }
 
         imageMode(CENTER);
 
@@ -51,6 +53,18 @@ class Satilite {
                 }
             }
         });
+    }
+
+    drawDirection() {
+        stroke("white");
+        strokeWeight(5);
+        line(
+            this.x,
+            this.y,
+            this.x + this.direction.x * 50,
+            this.y + this.direction.y * 50
+        );
+        noStroke();
     }
 
     addLoc(x, y) {
