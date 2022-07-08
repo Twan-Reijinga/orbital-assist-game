@@ -158,6 +158,18 @@ function startRound() {
         satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
         goals.push(new Goal(2, width - 27, 250, "y"));
     }
+    if (round === 6) {
+        // planets.push(new Planet(300, 420, 25, planet_3, "white"));
+        // planets.push(new Planet(450, 280, 25, planet_1, "white"));
+        // de corecte manier hierboven
+        planets.push(new Planet(100, 100, 25, planet_3, "white"));
+        planets.push(new Planet(200, 200, 30, planet_4, "white"));
+        planets.push(new Planet(300, 300, 30, planet_5, "white"));
+        // tijdelijke planeeten hierboven
+        direction = createVector(1, 0);
+        satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(2, width - 700, 250, "y"));
+    }
 }
 
 function movePlanet() {
