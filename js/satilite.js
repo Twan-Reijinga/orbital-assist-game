@@ -44,7 +44,7 @@ class Satilite {
 
                 const distance = calcDistance(this, goal);
 
-                const collision = distance < 30;
+                const collision = distance < 60;
 
                 if (!collisionHad && collision) {
                     win();

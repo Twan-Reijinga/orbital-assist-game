@@ -70,11 +70,14 @@ function updateCountDown() {
 }
 
 function death() {
-    console.log(death);
+    console.log("Death");
 }
 
 function win() {
-    console.log(win);
+    console.log("win");
+    satilites = [];
+    round++;
+    activeGame = false;
 }
 
 function startgame() {
@@ -84,7 +87,7 @@ function startgame() {
         satilites.push(
             new Satilite(325, 650, 20, 20, satalite_2, 2, direction)
         );
-        goals.push(new Goal(0, width - 27, 180, "y"));
+        goals.push(new Goal(2, width - 27, 180, "y"));
     }
 }
 
