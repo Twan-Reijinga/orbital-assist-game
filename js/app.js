@@ -24,8 +24,6 @@ function preload() {
     satalite_0 = loadImage("img/satalite_0.png");
     satalite_1 = loadImage("img/satalite_1.png");
     satalite_2 = loadImage("img/satalite_2.png");
-    death_sound = loadSound('sfx/explosion.wav');
-    win_sound = loadSound('sfx/pickupCoin.wav');
 }
 
 function setup() {
@@ -69,6 +67,17 @@ function draw() {
 
         satilites.forEach((satilite) => {
             if (activeGame) {
+                if (
+                    satilite.x < 0 ||
+                    satilite.y < 50 ||
+                    satilite.x > 700 ||
+                    satilite.y > 700
+                ) {
+                    hasLost = true;
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
                 satilite.update();
             }
 
@@ -168,6 +177,18 @@ function startRound() {
         direction = createVector(0, -1);
         satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
         goals.push(new Goal(2, width - 200, 690, "x"));
+    }
+    if (round === 6) {
+        // planets.push(new Planet(300, 420, 25, planet_3, "white"));
+        // planets.push(new Planet(450, 280, 25, planet_1, "white"));
+        // de corecte manier hierboven
+        planets.push(new Planet(100, 100, 25, planet_3, "white"));
+        planets.push(new Planet(200, 200, 30, planet_4, "white"));
+        planets.push(new Planet(300, 300, 30, planet_5, "white"));
+        // tijdelijke planeeten hierboven
+        direction = createVector(1, 0);
+        satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(2, width - 700, 250, "y"));
     }
 }
 
