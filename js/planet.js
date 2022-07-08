@@ -12,6 +12,7 @@ class Planet {
     draw() {
         noFill();
         stroke(this.color);
+        strokeWeight(1);
         circle(this.x, this.y, this.gravityRadius * 2);
         noStroke();
         image(this.img, this.x - this.radius, this.y - this.radius);

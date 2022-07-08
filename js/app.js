@@ -34,6 +34,7 @@ function setup() {
     goal = new Goal(0, width - 27, 69, "y");
     noStroke();
     textFont(font);
+
     setInterval(updateCountDown, 1000);
 }
 
@@ -48,7 +49,10 @@ function draw() {
         planet.draw();
     });
     satilites.forEach((satilite) => {
-        satilite.update();
+        if (activeGame) {
+            satilite.update();
+        }
+
         satilite.draw();
     });
 
@@ -57,7 +61,11 @@ function draw() {
 }
 
 function updateCountDown() {
+    if (activeGame) {
+        return;
+    }
     if (countDown <= 0) {
+        activeGame = true;
         countDown = 30;
     } else {
         countDown--;
