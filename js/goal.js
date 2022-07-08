@@ -1,9 +1,19 @@
 class Goal {
     constructor(id, x, y, dir) {
+        this.id = id;
+
         this.dir = dir;
 
         this.x = x;
         this.y = y;
+
+        if (id == 0) {
+            this.image = portal_0;
+        } else if (id == 1) {
+            this.image = portal_1;
+        } else {
+            this.image = portal_2;
+        }
 
         if (this.dir == "x") {
             this.width = 69;
@@ -21,10 +31,10 @@ class Goal {
             push();
             translate(this.x, this.y);
             rotate(radians(-90));
-            image(portal_0, 0, 0);
+            image(this.image, 0, 0);
             pop();
         } else {
-            image(portal_0, this.x, this.y);
+            image(this.image, this.x, this.y);
         }
     }
 }
