@@ -10,7 +10,7 @@ class StatusBar {
         fill(255);
         textSize(30);
         textAlign(LEFT, CENTER);
-        text("Countdown: " + countDown, 32, this.height / 2);
+        text("Launch in " + countDown + " seconds", 32, this.height / 2);
         textAlign(RIGHT, CENTER);
         text("Score: " + round, this.width - 32, this.height / 2);
     }

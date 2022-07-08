@@ -17,7 +17,7 @@ function setup() {
     const WIDTH = 700;
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
-    frameRate(60);
+    frameRate(144);
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, "white"));
     let direction = createVector(1, 0);
     satilite = new Satilite(200, 420, 20, 20, "green", direction);
@@ -25,6 +25,7 @@ function setup() {
     goal = new Goal(69, 69, "y");
     noStroke();
     textFont(font);
+    setInterval(updateCountDown, 1000);
 }
 
 function draw() {
@@ -41,4 +42,12 @@ function draw() {
     satilite.update();
     satilite.draw();
     statusBar.draw();
+}
+
+function updateCountDown() {
+    if (countDown <= 0) {
+        countDown = 30;
+    } else {
+        countDown--;
+    }
 }
