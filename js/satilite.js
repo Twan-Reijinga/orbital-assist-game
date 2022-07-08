@@ -12,7 +12,7 @@ class Satilite {
         this.addLoc(this.direction.x, this.direction.y);
         planets.forEach((planet) => {
             let distance = calcDistance(this, planet);
-            if (distance <= planet.radius) {
+            if (distance <= planet.radius + this.width / 2) {
                 console.log("dead");
             } else if (distance <= planet.gravityRadius) {
                 let direction = calcDirection(this, planet);

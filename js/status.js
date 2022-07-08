@@ -4,9 +4,14 @@ class StatusBar {
         this.height = height;
     }
 
-    draw(color) {
-        fill(color);
-        console.log(this.width);
+    draw() {
+        fill(0);
         rect(0, 0, this.width, this.height);
+        fill(255);
+        textSize(30);
+        textAlign(LEFT, CENTER);
+        text("Countdown: " + countDown, 32, this.height / 2);
+        textAlign(RIGHT, CENTER);
+        text("Score: " + round, this.width - 32, this.height / 2);
     }
 }
