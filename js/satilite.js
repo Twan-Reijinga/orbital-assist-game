@@ -1,10 +1,11 @@
 class Satilite {
-    constructor(x, y, width, height, img, direction) {
+    constructor(x, y, width, height, img, id, direction) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.img = img;
+        this.id = id;
         this.direction = direction;
     }
 
@@ -34,6 +35,24 @@ class Satilite {
         image(this.img, this.x, this.y, this.width, this.height);
 
         imageMode(CORNER);
+
+        this.checkGoalCollision();
+    }
+
+    checkGoalCollision() {
+        goals.forEach((goal) => {
+            if (goal.id == this.id) {
+                let collisionHad = false;
+
+                const distance = calcDistance(this, goal);
+
+                const collision = distance < 30;
+
+                if (!collisionHad && collision) {
+                    win();
+                }
+            }
+        });
     }
 
     drawDirection() {
