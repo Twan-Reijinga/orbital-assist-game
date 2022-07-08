@@ -1,5 +1,7 @@
 const planets = [];
 let satilite;
+let statusBar;
+let round;
 
 function preload() {}
 
@@ -8,9 +10,11 @@ function setup() {
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
     frameRate(60);
+
     planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, "red"));
     let direction = createVector(1, 0);
     satilite = new Satilite(200, 410, 20, 20, "green", direction);
+    statusBar = new StatusBar(WIDTH, 50);
     noStroke();
 }
 
@@ -22,7 +26,7 @@ function draw() {
             planet.draw();
         });
     });
-
     satilite.update();
     satilite.draw();
+    statusBar.draw(0);
 }
