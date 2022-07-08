@@ -29,7 +29,7 @@ class Satilite {
         imageMode(CENTER);
 
         line(0, 0, this.x, this.y);
-        image(satalite_blue, this.x, this.y, this.width, this.height);
+        image(satalite_1, this.x, this.y, this.width, this.height);
 
         imageMode(CORNER);
     }
