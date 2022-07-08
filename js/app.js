@@ -4,7 +4,7 @@ const satilitesCompleted = 0;
 let start_status = false;
 const goals = [];
 let statusBar;
-let round = 1;
+let round = 0;
 let countDown = 30;
 let activeGame = false;
 
@@ -62,7 +62,10 @@ function draw() {
         });
 
         satilites.forEach((satilite) => {
-            satilite.update();
+            if (activeGame) {
+                satilite.update();
+            }
+
             satilite.draw();
         });
 
@@ -101,6 +104,7 @@ function win() {
     satilitesCompleted = 0;
     round++;
     activeGame = false;
+    startRound();
 }
 
 function startRound() {
@@ -130,12 +134,7 @@ function movePlanet() {
             dmouseX = mouseX - pmouseX;
             dmouseY = mouseY - pmouseY;
             planets[i].addLoc(dmouseX, dmouseY);
+            i = planets.length;
         }
     }
-    // planets.forEach((planet) => {
-    //     if (planet.selected) {
-    //         planet.x = mouseX;
-    //         planet.y = mouseY;
-    //     }
-    // });
 }
