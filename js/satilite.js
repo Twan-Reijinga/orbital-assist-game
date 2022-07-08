@@ -16,7 +16,9 @@ class Satilite {
             if (distance <= planet.radius + this.width / 2) {
                 hasLost = true;
                 setTimeout(() => {
-                    window.location.reload();
+                    setTimeout(() => {
+                        lose();
+                    }, 1500);
                 }, 3000);
             } else if (distance <= planet.gravityRadius) {
                 let direction = calcDirection(this, planet);
@@ -54,7 +56,6 @@ class Satilite {
 
                 if (!collisionHad && collision) {
                     satilitesCompleted++;
-                    
                 }
             }
         });

@@ -75,8 +75,8 @@ function draw() {
                 ) {
                     hasLost = true;
                     setTimeout(() => {
-                        window.location.reload();
-                    }, 3000);
+                        lose();
+                    }, 1500);
                 }
                 satilite.update();
             }
@@ -119,22 +119,23 @@ function updateCountDown() {
     }
 }
 
-function death() {
-    console.log("Death");
+function lose() {
+    hasLost = false;
+    activeGame = false;
+    startRound();
 }
 
 function win() {
-    console.log("win");
-    satilites = [];
-    goals = [];
-    planets = [];
-    satilitesCompleted = 0;
     round++;
     activeGame = false;
     startRound();
 }
 
 function startRound() {
+    satilitesCompleted = 0;
+    satilites = [];
+    goals = [];
+    planets = [];
     let direction;
     if (round === 0) {
         // planets.push(new Planet(400, 300, 25, planet_1, "white"));
@@ -166,6 +167,8 @@ function startRound() {
         direction = createVector(1, 0);
         satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
         goals.push(new Goal(2, width - 27, 250, "y"));
+    }
+    if (round === 4) {
     }
 }
 
