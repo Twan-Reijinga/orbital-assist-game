@@ -9,10 +9,10 @@ class Planet {
     draw() {
         noFill();
         stroke(this.color);
-        circle(this.x, this.y, this.grafityRadius);
+        circle(this.x, this.y, this.grafityRadius * 2);
         fill(this.color);
         noStroke();
-        circle(this.x, this.y, this.radius);
+        circle(this.x, this.y, this.radius * 2);
     }
 
     changeLoc(x, y) {

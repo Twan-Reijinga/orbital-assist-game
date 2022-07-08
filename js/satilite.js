@@ -9,6 +9,12 @@ class Satilite {
 
     update() {
         this.changeLoc(this.x + this.direction.x, this.y + this.direction.y);
+        let distance = calcDistance(this, planet);
+        if (distance <= planet.radius) {
+            console.log("dead");
+        } else if (distance <= planet.grafityRadius) {
+            console.log("grafity");
+        }
     }
 
     draw() {
