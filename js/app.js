@@ -98,6 +98,7 @@ function win() {
     satilites = [];
     round++;
     activeGame = false;
+    startRound();
 }
 
 function startRound() {
