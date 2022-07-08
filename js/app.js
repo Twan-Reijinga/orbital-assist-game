@@ -4,7 +4,7 @@ let satilitesCompleted = 0;
 let start_status = false;
 let goals = [];
 let statusBar;
-let round = 3;
+let round = 0;
 let countDown = 30;
 let activeGame = false;
 let hasLost = false;
