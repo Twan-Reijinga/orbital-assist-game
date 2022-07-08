@@ -26,10 +26,12 @@ class Satilite {
         fill(this.color);
         noStroke();
 
-        rectMode(CENTER);
-        rect(this.x, this.y, this.width, this.height);
-        rectMode(CORNER);
+        imageMode(CENTER);
+
         line(0, 0, this.x, this.y);
+        image(satalite_blue, this.x, this.y, this.width, this.height);
+
+        imageMode(CORNER);
     }
 
     addLoc(x, y) {
