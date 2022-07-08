@@ -15,14 +15,14 @@ function setup() {
 }
 
 function draw() {
-    planet.x = mouseX;
-    planet.y = mouseY;
     background(69);
-    console.log(planets);
+
     planets.forEach((planet) => {
-        console.log(planet);
-        planet.draw();
+        planets.forEach((planet) => {
+            planet.draw();
+        });
     });
+
     satilite.update();
     satilite.draw();
 }

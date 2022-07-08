@@ -10,14 +10,16 @@ class Satilite {
 
     update() {
         this.addLoc(this.direction.x, this.direction.y);
-        let distance = calcDistance(this, planet);
-        if (distance <= planet.radius) {
-            console.log("dead");
-        } else if (distance <= planet.gravityRadius) {
-            let direction = calcDirection(this, planet);
-            let angle = atan2(-direction.y, -direction.x);
-            this.addDirection(angle);
-        }
+        planets.forEach((planet) => {
+            let distance = calcDistance(this, planet);
+            if (distance <= planet.radius) {
+                console.log("dead");
+            } else if (distance <= planet.gravityRadius) {
+                let direction = calcDirection(this, planet);
+                let angle = atan2(-direction.y, -direction.x);
+                this.addDirection(angle);
+            }
+        });
     }
 
     draw() {
