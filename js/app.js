@@ -37,6 +37,7 @@ function setup() {
     // goal = new Goal(0, width - 27, 69, "y");
     noStroke();
     textFont(font);
+
     setInterval(updateCountDown, 1000);
 }
 
@@ -74,7 +75,11 @@ function mouseClicked(){
 }
 
 function updateCountDown() {
+    if (activeGame) {
+        return;
+    }
     if (countDown <= 0) {
+        activeGame = true;
         countDown = 30;
     } else {
         countDown--;
