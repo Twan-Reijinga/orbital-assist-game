@@ -23,7 +23,12 @@ class Satilite {
     draw() {
         fill(this.color);
         noStroke();
-        rect(this.x, this.y, this.width, this.height);
+        rect(
+            this.x - this.width / 2,
+            this.y - this.height / 2,
+            this.width,
+            this.height
+        );
     }
 
     addLoc(x, y) {
