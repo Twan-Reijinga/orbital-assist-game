@@ -1,8 +1,8 @@
-const planets = [];
+let planets = [];
 let satilites = [];
 let satilitesCompleted = 0;
 let start_status = false;
-const goals = [];
+let goals = [];
 let statusBar;
 let round = 0;
 let countDown = 30;
@@ -107,6 +107,8 @@ function death() {
 function win() {
     console.log("win");
     satilites = [];
+    goals = [];
+    planets = [];
     satilitesCompleted = 0;
     round++;
     activeGame = false;
