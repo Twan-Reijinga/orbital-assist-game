@@ -25,7 +25,8 @@ class Satilite {
     draw() {
         fill(this.color);
         noStroke();
-        rect(
+        image(
+            satalite_blue,
             this.x - this.width / 2,
             this.y - this.height / 2,
             this.width,
