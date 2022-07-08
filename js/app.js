@@ -24,7 +24,6 @@ function preload() {
     satalite_0 = loadImage("img/satalite_0.png");
     satalite_1 = loadImage("img/satalite_1.png");
     satalite_2 = loadImage("img/satalite_2.png");
-    
 }
 
 function setup() {
@@ -68,6 +67,17 @@ function draw() {
 
         satilites.forEach((satilite) => {
             if (activeGame) {
+                if (
+                    satilite.x < 0 ||
+                    satilite.y < 50 ||
+                    satilite.x > 700 ||
+                    satilite.y > 700
+                ) {
+                    hasLost = true;
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
                 satilite.update();
             }
 
@@ -111,7 +121,6 @@ function updateCountDown() {
 
 function death() {
     console.log("Death");
-    
 }
 
 function win() {
