@@ -3,6 +3,7 @@ function setup() {
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
     frameRate(144);
+    new Planet();
 }
 
 function draw() {
