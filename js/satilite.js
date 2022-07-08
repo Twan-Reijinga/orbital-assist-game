@@ -47,15 +47,28 @@ class Satilite {
     checkGoalCollision() {
         goals.forEach((goal) => {
             if (goal.id == this.id) {
+                // let collisionHad = false;
+
+                // const distance = calcDist0nce(this, goal);
+                // console.log(distance);
+
+                // const collision = distance < 60;
+
+                let collision = false;
                 let collisionHad = false;
 
-                const distance = calcDistance(this, goal);
-                console.log(distance);
-
-                const collision = distance < 60;
+                if (
+                    this.x + this.width >= goal.x && // r1 right edge past r2 left
+                    this.x <= goal.x + goal.width && // r1 left edge past r2 right
+                    this.y + this.height >= goal.y && // r1 top edge past r2 bottom
+                    this.y <= goal.y + goal.height
+                ) {
+                    collision = true;
+                }
 
                 if (!collisionHad && collision) {
                     satilitesCompleted++;
+                    collisionHad = true;
                 }
             }
         });
