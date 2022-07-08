@@ -114,19 +114,37 @@ function win() {
 }
 
 function startRound() {
+    let direction;
     if (round === 0) {
-        planets.push(new Planet(400, 300, 25, planet_1, "white"));
-        let direction = createVector(0, -1);
+        // planets.push(new Planet(400, 300, 25, planet_1, "white"));
+        // de corecte manier
+        planets.push(new Planet(100, 100, 25, planet_1, "white"));
+        // tijdelijke planeeten hierboven
+        direction = createVector(0, -1);
         satilites.push(
             new Satilite(325, 650, 20, 20, satalite_2, 2, direction)
         );
         goals.push(new Goal(2, width - 27, 180, "y"));
     }
     if (round === 1) {
-        planets.push(new Planet(450, 380, 25, planet_3, "white"));
-        let direction = createVector(1, 0);
+        // planets.push(new Planet(450, 380, 25, planet_3, "white"));
+        // de corecte manier
+        planets.push(new Planet(100, 100, 25, planet_1, "white"));
+        // tijdelijke planeeten hierboven
+        direction = createVector(1, 0);
         satilites.push(new Satilite(50, 300, 20, 20, satalite_2, 2, direction));
-        goals.push(new Goal(0, width - 240, 690, "x"));
+        goals.push(new Goal(2, width - 240, 690, "x"));
+    }
+    if (round === 2) {
+        // planets.push(new Planet(300, 420, 25, planet_3, "white"));
+        // planets.push(new Planet(450, 280, 25, planet_1, "white"));
+        // de corecte manier hierboven
+        planets.push(new Planet(100, 100, 25, planet_1, "white"));
+        planets.push(new Planet(300, 400, 25, planet_1, "white"));
+        // tijdelijke planeeten hierboven
+        direction = createVector(1, 0);
+        satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(2, width - 27, 250, "y"));
     }
 }
 
