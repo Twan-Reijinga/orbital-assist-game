@@ -1,6 +1,6 @@
 const planets = [];
 let satilites = [];
-let start_status = 0;
+let start_status = false;
 const goals = [];
 let statusBar;
 let round = 0;
@@ -46,7 +46,7 @@ function draw() {
     textSize(100);
     text('PRESS TO START', 100, 350);
     fill(255);
-    if (start_status == 1){
+    if (start_status == true){
         background(backgroundSpace);
         if (!activeGame) {
             movePlanet();
@@ -70,7 +70,7 @@ function draw() {
 }
 
 function mouseClicked(){
-    start_status = 1;
+    start_status = true;
     draw();
 }
 
