@@ -127,12 +127,7 @@ function movePlanet() {
             dmouseX = mouseX - pmouseX;
             dmouseY = mouseY - pmouseY;
             planets[i].addLoc(dmouseX, dmouseY);
+            i = planets.length;
         }
     }
-    // planets.forEach((planet) => {
-    //     if (planet.selected) {
-    //         planet.x = mouseX;
-    //         planet.y = mouseY;
-    //     }
-    // });
 }
