@@ -1,6 +1,6 @@
 const planets = [];
 let satilites = [];
-const satilitesCompleted = 0;
+let satilitesCompleted = 0;
 let start_status = false;
 const goals = [];
 let statusBar;
