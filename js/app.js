@@ -4,7 +4,7 @@ let start_status = false;
 const goals = [];
 let statusBar;
 let round = 0;
-let countDown = 5;
+let countDown = 30;
 let activeGame = false;
 
 function preload() {
