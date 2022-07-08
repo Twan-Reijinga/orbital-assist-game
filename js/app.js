@@ -1,10 +1,10 @@
 const planets = [];
 let satilites = [];
-let start_status = 0;
+let start_status = false;
 const goals = [];
 let statusBar;
 let round = 0;
-let countDown = 4;
+let countDown = 30;
 let activeGame = false;
 
 function preload() {
@@ -29,7 +29,7 @@ function setup() {
     const HEIGHT = 700;
     createCanvas(WIDTH, HEIGHT);
     frameRate(144);
-    startgame();
+    startRound();
     // planets.push(new Planet(WIDTH / 2, HEIGHT / 2, 25, planet_1, "white"));
     // let direction = createVector(1, 0);
     // satilites.push(new Satilite(200, 420, 20, 20, satalite_2, direction));
@@ -46,7 +46,7 @@ function draw() {
     textSize(100);
     text("PRESS TO START", 100, 350);
     fill(255);
-    if (start_status == 1) {
+    if (start_status == true) {
         background(backgroundSpace);
         if (!activeGame) {
             movePlanet();
@@ -73,7 +73,7 @@ function draw() {
 }
 
 function mouseClicked() {
-    start_status = 1;
+    start_status = true;
     draw();
 }
 
@@ -90,21 +90,30 @@ function updateCountDown() {
 }
 
 function death() {
-    console.log(death);
+    console.log("Death");
 }
 
 function win() {
-    console.log(win);
+    console.log("win");
+    satilites = [];
+    round++;
+    activeGame = false;
 }
 
-function startgame() {
+function startRound() {
     if (round === 0) {
         planets.push(new Planet(400, 300, 25, planet_1, "white"));
         let direction = createVector(0, -1);
         satilites.push(
             new Satilite(325, 650, 20, 20, satalite_2, 2, direction)
         );
-        goals.push(new Goal(0, width - 27, 180, "y"));
+        goals.push(new Goal(2, width - 27, 180, "y"));
+    }
+    if (round === 1) {
+        planets.push(new Planet(450, 380, 25, planet_3, "white"));
+        let direction = createVector(1, 0);
+        satilites.push(new Satilite(50, 300, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(0, width - 240, 690, "x"));
     }
 }
 
