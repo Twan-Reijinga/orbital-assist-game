@@ -4,7 +4,7 @@ let satilitesCompleted = 0;
 let start_status = false;
 let goals = [];
 let statusBar;
-let round = 0;
+let round = 3;
 let countDown = 30;
 let activeGame = false;
 let hasLost = false;
@@ -157,6 +157,17 @@ function startRound() {
         direction = createVector(1, 0);
         satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
         goals.push(new Goal(2, width - 27, 250, "y"));
+    }
+    if (round === 3) {
+        // planets.push(new Planet(125, 200, 25, planet_3, "white"));
+        // planets.push(new Planet(400, 180, 18, planet_2, "white"));
+        // de corecte manier hierboven
+        planets.push(new Planet(100, 100, 25, planet_3, "white"));
+        planets.push(new Planet(300, 400, 18, planet_2, "white"));
+        // tijdelijke planeten hierboven
+        direction = createVector(0, -1);
+        satilites.push(new Satilite(50, 500, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(2, width - 200, 690, "x"));
     }
 }
 
