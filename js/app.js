@@ -1,12 +1,13 @@
-const planets = [];
+let planets = [];
 let satilites = [];
 let satilitesCompleted = 0;
 let start_status = false;
-const goals = [];
+let goals = [];
 let statusBar;
 let round = 0;
 let countDown = 30;
 let activeGame = false;
+let hasLost = false;
 
 function preload() {
     backgroundSpace = loadImage("img/background.png");
@@ -44,11 +45,14 @@ function setup() {
 }
 
 function draw() {
-    background(start_screen_background);
-    textSize(100);
-    text("PRESS TO START", 99, 350);
     fill(255);
     if (start_status == true) {
+        if (hasLost) {
+            textAlign(CENTER, CENTER);
+            textSize(60);
+            text("YOU LOSE", 350, 350);
+            return;
+        }
         if (satilitesCompleted == satilites.length) {
             win();
         }
@@ -75,6 +79,10 @@ function draw() {
         });
 
         statusBar.draw();
+    } else {
+        background(start_screen_background);
+        textSize(100);
+        text("PRESS TO START", 99, 350);
     }
 }
 
@@ -109,6 +117,8 @@ function death() {
 function win() {
     console.log("win");
     satilites = [];
+    goals = [];
+    planets = [];
     satilitesCompleted = 0;
     round++;
     activeGame = false;
