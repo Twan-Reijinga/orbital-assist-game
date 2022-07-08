@@ -2,7 +2,9 @@ const planets = [];
 let goal;
 let satilite;
 
-function preload() {}
+function preload() {
+    backgroundSpace = loadImage('img/background.png');
+}
 
 function setup() {
     const WIDTH = 700;
@@ -17,7 +19,7 @@ function setup() {
 }
 
 function draw() {
-    background(69);
+    background(backgroundSpace);
 
     planets.forEach((planet) => {
         planets.forEach((planet) => {
