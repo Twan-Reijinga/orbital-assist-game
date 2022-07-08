@@ -1,6 +1,6 @@
 const planets = [];
 let satilites = [];
-let goal;
+const goals = [];
 let statusBar;
 let round = 1;
 let countDown = 30;
@@ -35,6 +35,7 @@ function setup() {
     // goal = new Goal(0, width - 27, 69, "y");
     noStroke();
     textFont(font);
+
     setInterval(updateCountDown, 1000);
 }
 
@@ -48,37 +49,60 @@ function draw() {
     planets.forEach((planet) => {
         planet.draw();
     });
+
     satilites.forEach((satilite) => {
-        satilite.update();
+        if (activeGame) {
+            satilite.update();
+        }
+
         satilite.draw();
     });
 
-    goal.draw();
+    goals.forEach((goal) => {
+        goal.draw();
+    });
+
     statusBar.draw();
 }
 
 function updateCountDown() {
+    if (activeGame) {
+        return;
+    }
     if (countDown <= 0) {
+        activeGame = true;
         countDown = 30;
     } else {
         countDown--;
     }
 }
 
-function startRound(){
+
+function death() {
+    console.log(death);
+}
+
+function win() {
+    console.log(win);
+}
+
+function startRound() {
     if (round === 0) {
         planets.push(new Planet(400, 300, 25, planet_1, "white"));
         let direction = createVector(0, -1);
-        satilites.push(new Satilite(325, 650, 20, 20, satalite_2, direction));
-        goal = new Goal(0, width - 27, 180, "y");
+        satilites.push(
+            new Satilite(325, 650, 20, 20, satalite_2, 2, direction)
+        );
+        goals.push(new Goal(0, width - 27, 180, "y"));
     }
     if (round === 1) {
         planets.push(new Planet(450, 380, 25, planet_3, "white"));
         let direction = createVector(1, 0);
-        satilites.push(new Satilite(50, 300, 20, 20, satalite_2, direction));
-        goal = new Goal(0, width - 240, 690, "x");
+        satilites.push(new Satilite(50, 300, 20, 20, satalite_2, 2, direction));
+        goals.push(new Goal(0, width - 240, 690, "x"));
     }
 }
+
 function movePlanet() {
     for (let i = 0; i < planets.length; i++) {
         if (
