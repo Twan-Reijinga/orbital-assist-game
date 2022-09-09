@@ -58,7 +58,11 @@ function draw() {
 
         background(backgroundSpace);
         if (!activeGame) {
-            movePlanet();
+            if (keyIsPressed) {
+                movePlanetByKey();
+            } else {
+                movePlanetByCursor();
+            }
         }
 
         planets.forEach((planet) => {
@@ -97,7 +101,7 @@ function draw() {
 }
 
 function keyPressed() {
-    if (keyCode == 13) {
+    if (keyCode == 13 || keyCode == 88) {
         countDown = 0;
     }
 }
@@ -191,7 +195,7 @@ function startRound() {
     }
 }
 
-function movePlanet() {
+function movePlanetByCursor() {
     for (let i = 0; i < planets.length; i++) {
         if (
             mouseIsPressed &&
@@ -203,5 +207,27 @@ function movePlanet() {
             planets[i].addLoc(dmouseX, dmouseY);
             i = planets.length;
         }
+    }
+}
+
+function movePlanetByKey() {
+    if (start_status && !activeGame) {
+        let direction = createVector(0, 0);
+        const speed = 2;
+        if (key == "ArrowUp") {
+            direction.y = -1;
+        }
+        if (key == "ArrowDown") {
+            direction.y = 1;
+        }
+        if (key == "ArrowLeft") {
+            direction.x = -1;
+        }
+        if (key == "ArrowRight") {
+            direction.x = 1;
+        }
+        planets.forEach((planet) => {
+            planet.addLoc(direction.x * speed, direction.y * speed);
+        });
     }
 }
